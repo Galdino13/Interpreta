@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
+import { useState } from "react";
 import stylesHP from "../styles/stylesHP";
+import firebase from '../src/firebaseConnection';
 
 export default function HomePage({navigation}){
     
@@ -8,10 +10,11 @@ export default function HomePage({navigation}){
         await firebase.auth().signOut();
         navigation.reset({
             index:0,
-            routes:[{name:'Login'}]
+            routes:[{name:'SignIn'}]
         });
-        alert("Deslogado com sucesso!");
     }
+    
+    const [showValue, setShowValue] = useState(false);
     return(
         <View style={stylesHP.container}>
             <Text style={stylesHP.h1}>|Interpreta.</Text>
@@ -31,25 +34,26 @@ export default function HomePage({navigation}){
                   </TouchableOpacity>
                 </View>
             </View>
+            {showValue? <Text style={stylesHP.errorMessage}>Ciclo Bloqueado!</Text>:null}
             <View style={stylesHP.lessons}>
                 <Text style={stylesHP.txtLessons}>Últimas Lições:</Text>
-                <TouchableOpacity style={stylesHP.btnLessons}>
+                <TouchableOpacity style={stylesHP.btnLessons} onPress={()=>navigation.navigate("Parafrasis")}>
                     <Text style={stylesHP.btnTxt}>Paráfrase Nv.1</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={stylesHP.btnLessons}>
+                <TouchableOpacity style={stylesHP.btnLessons} onPress={()=>navigation.navigate("Dictionary")}>
                     <Text style={stylesHP.btnTxt}>Dicionário Nv.1</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={stylesHP.btnLessons}>
+                <TouchableOpacity style={stylesHP.btnLessons} onPress={()=>navigation.navigate("Reading")}>
                     <Text style={stylesHP.btnTxt}>Interpretação Nv.1</Text>
                 </TouchableOpacity>
                 <Text style={stylesHP.txtLessons}>Próximas Lições:</Text>
-                <TouchableOpacity style={stylesHP.btnLessons}>
+                <TouchableOpacity style={stylesHP.btnLessons} onPress={()=>setShowValue(true)}>
                     <Text style={stylesHP.btnTxt}>Paráfrase Nv.2</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={stylesHP.btnLessons}>
+                <TouchableOpacity style={stylesHP.btnLessons} onPress={()=>setShowValue(true)}>
                     <Text style={stylesHP.btnTxt}>Dicionário Nv.2</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={stylesHP.btnLessons}>
+                <TouchableOpacity style={stylesHP.btnLessons} onPress={()=>setShowValue(true)}>
                     <Text style={stylesHP.btnTxt}>Interpretação Nv.2</Text>
                 </TouchableOpacity>
             </View>

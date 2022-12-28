@@ -64,12 +64,30 @@ const stylesRe = StyleSheet.create({
     marginTop:20,
   },choice:{
     fontFamily:"Segoe Ui",
-    color:'#FD7A39',
     textAlign:'center',
     marginTop:15,
     fontSize:25,
   },negrito:{
     fontWeight: "bold",
+  }, bottomBtn:{
+    marginBottom:50,
+    display:'flex',
+    flexDirection:"row",
+    justifyContent:'center',
+  },
+  btn:{
+    backgroundColor:'white',
+    width:100,
+    height:38,
+    marginLeft:10,
+    borderRadius:10,
+    alignItems:'center',
+  },
+  btnTxt:{
+    marginTop:10,
+    fontFamily:'Segoe Ui',
+    fontWeight:'bold',
+    color:"#F5E45F",
   }
 });
 

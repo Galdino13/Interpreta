@@ -5,7 +5,7 @@ import stylesPa from "../styles/stylesPa";
  
  
 let color = "#ffffff";
-export default function Parafrasis(props) {
+export default function Parafrasis({navigation}) {
   const [Num, setNum] = useState(5);
 function muda() {
   return color="#ff0000";
@@ -19,19 +19,27 @@ function muda() {
     </View>
     <Text style={stylesPa.infoTxt}>"João é <Text style={stylesPa.negrito}>ferrenho</Text> no futebol."</Text>
     <View style={stylesPa.container2}>
-      <TouchableOpacity style={[{backgroundColor: !(Num==1)?"#ffffff":"#FF2C2C"}, stylesPa.BtWord1]}  onPress={() => {(true)?setNum(1):setNum(Num);}}>
+      <TouchableOpacity style={[{backgroundColor: !(Num==1)?"#ffffff":"#FF2C2C"}, stylesPa.BtWord1]}  onPress={() => {(Num==5)?setNum(1):setNum(Num);}}>
         <Text style={[stylesPa.choice,{color: !(Num==1)?"#FD7A39":"#ffffff"}]}>Alegre</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[{backgroundColor: !(Num==2||Num==1||Num==3||Num==4)?"#ffffff":"#00C69E"}, stylesPa.BtWord1]} onPress={() => {(true)?setNum(2):setNum(Num);}}>
+      <TouchableOpacity style={[{backgroundColor: !(Num==2||Num==1||Num==3||Num==4)?"#ffffff":"#00C69E"}, stylesPa.BtWord1]} onPress={() => {(Num==5)?setNum(2):setNum(Num);}}>
         <Text style={[stylesPa.choice,{color: !(Num==2||Num==1||Num==3||Num==4)?"#FD7A39":"#ffffff"}]}>Implacável</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[{backgroundColor: !(Num==3)?"#ffffff":"#FF2C2C"}, stylesPa.BtWord3]} onPress={() => {(true)?setNum(3):setNum(Num);}}>
+      <TouchableOpacity style={[{backgroundColor: !(Num==3)?"#ffffff":"#FF2C2C"}, stylesPa.BtWord3]} onPress={() => {(Num==5)?setNum(3):setNum(Num);}}>
         <Text style={[stylesPa.choice,{color: !(Num==3)?"#FD7A39":"#ffffff"}]}>Bom</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={[{backgroundColor: !(Num==4)?"#ffffff":"#FF2C2C"}, stylesPa.BtWord4]} onPress={() => {(true)?setNum(4):setNum(Num);}}>
+      <TouchableOpacity style={[{backgroundColor: !(Num==4)?"#ffffff":"#FF2C2C"}, stylesPa.BtWord4]} onPress={() => {(Num==5)?setNum(4):setNum(Num);}}>
         <Text style={[stylesPa.choice,{color: !(Num==4)?"#FD7A39":"#ffffff"}]}> Ruim</Text>
       </TouchableOpacity>
     </View>
+    <View style={stylesPa.bottomBtn}>
+      <TouchableOpacity style={stylesPa.btn} onPress={()=> navigation.navigate('Cycle1')}>
+        <Text style={stylesPa.btnTxt}>Voltar</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={stylesPa.btn} onPress={()=> navigation.navigate("Dictionary")}>
+        <Text style={stylesPa.btnTxt}>Próximo</Text>
+      </TouchableOpacity>
+      </View>
 </View>
   );
 }
